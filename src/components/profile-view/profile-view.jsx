@@ -28,25 +28,26 @@ export function ProfileView({ movies, user, setUser, addFav, removeFav }) {
             </Card.Body>
           </Card>
         </Col>
-        <></>
+
         <h4>Favorite Movies</h4>
-        {movies
-          .filter((movie) => user.FavoriteMovies.includes(movie._id))
-          .map((movie) => (
-            <Col className="mb-4" key={movie._id} md={4}>
-              <MovieCard
-                movie={movie}
-                addFav={addFav}
-                removeFav={removeFav}
-                user={user}
-              />
-            </Col>
-          ))}
-        {/* // ) : (
-          // <div className="mb-4 primary" style={{ color: "white" }}>
-          //   No Favorite Movies Added
-          // </div>
-        // )} */}
+        {user && user.FavoriteMovies && user.FavoriteMovies.length > 0 ? (
+          movies
+            .filter((movie) => user.FavoriteMovies.includes(movie._id))
+            .map((movie) => (
+              <Col className="mb-4" key={movie._id} md={4}>
+                <MovieCard
+                  movie={movie}
+                  addFav={addFav}
+                  removeFav={removeFav}
+                  user={user}
+                />
+              </Col>
+            ))
+        ) : (
+          <div className="mb-4 primary" style={{ color: "white" }}>
+            No Favorite Movies Added
+          </div>
+        )}
       </Row>
     </Container>
   );
