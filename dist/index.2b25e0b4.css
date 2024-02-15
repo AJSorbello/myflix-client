@@ -13229,7 +13229,7 @@ textarea.form-control-lg {
 
 .open-button {
   color: #f5f5f5;
-  background-color: #4169e1;
+  background-color: red;
   border: none;
   border-radius: 4px;
   padding: 4px 12px;
@@ -13264,7 +13264,7 @@ textarea.form-control-lg {
 .back-button {
   color: #f5f5f5;
   cursor: pointer;
-  background-color: #1e90ff;
+  background-color: #bcbcbc;
   border: none;
   border-radius: 4px;
   margin-bottom: 20px;
