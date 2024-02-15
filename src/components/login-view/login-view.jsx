@@ -22,6 +22,7 @@ export const LoginView = ({ onLoggedIn }) => {
     }
     // Fetch the user
     fetch(`https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${Username}`, {
+      method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
