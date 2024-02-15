@@ -12,17 +12,18 @@ import {
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const Username = localStorage.getItem("Username");
-  const token = localStorage.getItem("token");
+  const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
-    if (!Username || !token) {
-      return;
+    const Username = localStorage.getItem("Username");
+    const token = localStorage.getItem("token");
+
+    if (Username && token) {
+      // If authentication state is present, directly call onLoggedIn
+      onLoggedIn({ Username }, token);
     }
     // Fetch the user
     fetch(`https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${Username}`, {
-      method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -34,11 +35,10 @@ export const LoginView = ({ onLoggedIn }) => {
         localStorage.clear();
         window.location.reload();
       });
+    // Set authChecked to true to indicate authentication has been checked
+    setAuthChecked(true);
   }, []);
 
-  if (Username && token) {
-    return;
-  }
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -69,7 +69,10 @@ export const LoginView = ({ onLoggedIn }) => {
         alert("Something went wrong");
       });
   };
-
+  // Render loading indicator while authentication is being checked
+  if (!authChecked) {
+    return <div>Loading...</div>;
+  }
   return (
     <Container>
       <Row>
