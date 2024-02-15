@@ -13,11 +13,11 @@ export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const userName = localStorage.getItem("userName");
+  const Username = localStorage.getItem("Username");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!userName || !token) {
+    if (!Username || !token) {
       return;
     }
     // Fetch the user
@@ -35,7 +35,7 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   }, []);
 
-  if (userName && token) {
+  if (Username && token) {
     return;
   }
   const handleSubmit = (event) => {
@@ -57,7 +57,7 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
-          localStorage.setItem("userName", data.user.Username);
+          localStorage.setItem("Username", data.user.Username);
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {
