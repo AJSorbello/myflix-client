@@ -169,8 +169,8 @@ export const MainView = () => {
                     <Col></Col>
                   ) : (
                     <>
-                      <Row className="justify-content-md-center search-bar-custom">
-                        <Col xs lg="4" className="mb-2 mt-4">
+                      <Row className="justify-content-md-center search-bar-custom mt-5">
+                        <Col xs lg="4">
                           <Row>
                             <Col>
                               <FormControl
