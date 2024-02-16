@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserInfo({ email, username, birthday }) {
+function UserInfo({ fullname, email, username, birthday }) {
   const birthDate = new Date(birthday);
   const utcBirthDate = new Date(
     birthDate.getTime() + birthDate.getTimezoneOffset() * 60000
@@ -12,7 +12,7 @@ function UserInfo({ email, username, birthday }) {
   return (
     <>
       <h4>User Info</h4>
-      {/* <h2>Full Name: {fullname}</h2> */}
+      <h2>Full Name: {fullname}</h2>
       <p>User Name: {username}</p>
       <p>E-mail: {email}</p>
       <p>Birthday: {`${month} ${day}, ${year}`}</p>

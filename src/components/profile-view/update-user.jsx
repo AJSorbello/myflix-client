@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 
 const UpdateUser = ({ user, setUser }) => {
   const [updatedUser, setUpdatedUser] = useState({
+    Fullname: user.Fullname,
     Username: user.Username,
     Password: user.Password,
     Email: user.Email,
@@ -95,6 +96,18 @@ const UpdateUser = ({ user, setUser }) => {
   return (
     <>
       <h4>Update User</h4>
+       <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Fullname:</Form.Label>
+          <Form.Control
+            type="text"
+            name="Username"
+            defaultValue={user.Fullname}
+            onChange={(e) => handleUpdate(e)}
+            required
+            placeholder="Enter Full Name"
+          />
+        </Form.Group>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Username:</Form.Label>
