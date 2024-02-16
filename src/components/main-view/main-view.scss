@@ -21,8 +21,17 @@ body {
   border-radius: 4px;
 }
 
+/* Light mode */
 .form-control {
-  background-color: white
+  background-color: white;
+  color: black;
 }
+
+/* Dark mode */
+.form-control.dark-mode {
+  background-color: black;
+  color: white;
+}
+
 
 @import "~bootstrap/scss/bootstrap";

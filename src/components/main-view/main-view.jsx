@@ -155,7 +155,7 @@ export const MainView = () => {
                   ) : (
                     <>
                       <Row className="justify-content-md-center">
-                        <Col xs lg="4">
+                        <Col xs lg="4" className="mb-2 mt-2">
                           <Row>
                             <Col>
                               <FormControl
