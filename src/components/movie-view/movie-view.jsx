@@ -57,12 +57,17 @@ export const MovieView = ({ user, addFav, removeFav, movies }) => {
             <h1>{movie.Title}</h1>
             {/* Other movie view content */}
           </div>
-          <div>
-            <span>Year: </span>
-            <span>
-              <h1>{movie.Year}</h1>
-            </span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+            <h2>Year: </h2>
+            <></>
+            <h2>{movie.Year}</h2>
           </div>
+
           <div>
             <span>
               <iframe
@@ -76,12 +81,8 @@ export const MovieView = ({ user, addFav, removeFav, movies }) => {
             </span>
           </div>
           <div>
-            <span>Director: </span>
-            <span>{movie.Director.Name}</span>
-          </div>
-          <div>
-            <span>Genre: </span>
-            <span>{movie.Genre.Name}</span>
+            <h2 style={{ fontSize: "2em" }}>Director: {movie.Director.Name}</h2>
+            <h2 style={{ fontSize: "2em" }}>Genre: {movie.Genre.Name}</h2>
           </div>
           <br />
           <p style={{ maxWidth: "800px", margin: "0 auto" }}>
