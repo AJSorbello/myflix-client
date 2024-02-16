@@ -9,7 +9,7 @@ export const MovieCard = ({ user, movie, addFav, removeFav }) => {
   const isFav = user.FavoriteMovies.find((mId) => mId === movie._id);
 
   return (
-    <Card className="h-100">
+    <Card className="main-content-custom">
       <Card.Img variant="top" src={movie.ImagePath} />
       <Card.Body>
         <div>

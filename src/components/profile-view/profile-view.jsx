@@ -6,7 +6,7 @@ import UpdateUser from "./update-user";
 
 export function ProfileView({ movies, user, setUser, addFav, removeFav }) {
   return (
-    <Container>
+    <Container className="main-content-custom">
       <Row>
         <Col xs={12} sm={4}>
           <Card>
@@ -42,11 +42,6 @@ export function ProfileView({ movies, user, setUser, addFav, removeFav }) {
               />
             </Col>
           ))}
-        ) : (
-        <div className="mb-4 primary" style={{ color: "white" }}>
-          No Favorite Movies Added
-        </div>
-        )
       </Row>
     </Container>
   );

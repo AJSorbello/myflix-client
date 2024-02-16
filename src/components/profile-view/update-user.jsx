@@ -157,7 +157,7 @@ const UpdateUser = ({ user, setUser }) => {
         {/* Add more Form.Group elements for additional fields */}
         <Button
           className="mt-3"
-          variant="primary"
+          variant="secondary"
           type="submit"
           onClick={handleSubmit}>
           Save Changes

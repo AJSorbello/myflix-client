@@ -70,7 +70,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Container>
+    <Container className="main-content-custom">
       <Row>
         <Col>
           <CardGroup>

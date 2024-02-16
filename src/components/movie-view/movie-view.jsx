@@ -27,7 +27,7 @@ export const MovieView = ({ user, addFav, removeFav, movies }) => {
   return (
     <>
       {movie && (
-        <div style={{ textAlign: "center" }}>
+        <div className="main-content-custom" style={{ textAlign: "center" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <img
               className="movie-image"

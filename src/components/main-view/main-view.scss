@@ -20,11 +20,14 @@ body {
   border: none;
   border-radius: 4px;
 }
-
+.main-content-custom {
+  margin-top: 51px; // Set the top margin to 51px
+}
 /* Light mode */
 .form-control {
   background-color: white;
   color: black;
+  
 }
 
 /* Dark mode */

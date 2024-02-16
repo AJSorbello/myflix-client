@@ -73,7 +73,7 @@ export const SignupView = () => {
       });
   };
   return (
-    <Container>
+    <Container className="main-content-custom">
       <Row>
         <Col>
           <CardGroup>

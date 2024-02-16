@@ -119,7 +119,7 @@ export const MainView = () => {
           }}
         />
         <Row className="justify-content-md-center">
-          <Routes>
+          <Routes className="main-content-custom">
             <Route
               path="/signup"
               element={

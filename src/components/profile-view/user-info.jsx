@@ -12,7 +12,7 @@ function UserInfo({ fullname, email, username, birthday }) {
   return (
     <>
       <h4>User Info</h4>
-      <h2>Full Name: {fullname}</h2>
+      <p>Full Name: {fullname}</p>
       <p>User Name: {username}</p>
       <p>E-mail: {email}</p>
       <p>Birthday: {`${month} ${day}, ${year}`}</p>
