@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Container, Nav, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./navigation-bar.scss";
+import logo from "../../belloflix_logo_200x70.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   const [theme, setTheme] = useState("light");
@@ -27,7 +28,15 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
       fixed="top"
       onClick={() => window.scrollTo(0, 0)}>
       <Container>
-        <Navbar.Brand>Movie App</Navbar.Brand>
+        <Navbar.Brand>
+          <img
+            src={logo}
+            width="200"
+            height="70"
+            className="d-inline-block align-top"
+            alt="Belloflix Logo"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           bg={theme === "light" ? "light" : "dark"} // Set background color of toggle button
