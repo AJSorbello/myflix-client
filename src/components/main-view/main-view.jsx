@@ -8,7 +8,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Button, FormControl } from "react-bootstrap";
 
 export const MainView = () => {
   const [token, setToken] = useState(null);
@@ -150,28 +150,34 @@ export const MainView = () => {
                 <>
                   {!user ? (
                     <Navigate to="/login" replace />
-                  ) : !ready ? (
-                    <Col> Loading...</Col>
                   ) : movies.length === 0 ? (
-                    <Col> The list is empty!</Col>
+                    <Col></Col>
                   ) : (
                     <>
                       <Row className="justify-content-md-center">
-                        <Col className="mb-3 mt-3">
+                        <Col xs lg="4">
                           <Row>
-                            <Col md={6} className="mx-auto">
-                              <input
+                            <Col>
+                              <FormControl
                                 type="text"
-                                placeholder="Search..."
+                                placeholder="Search"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="form-control"
                               />
                             </Col>
+
+                            <Col xs="auto">
+                              <Button
+                                variant="primary"
+                                className="clear-button"
+                                onClick={() => setSearchTerm("")}>
+                                Clear
+                              </Button>
+                            </Col>
                           </Row>
                         </Col>
                       </Row>
-
                       {movies
                         .filter((movie) =>
                           movie.Title.toLowerCase().includes(
