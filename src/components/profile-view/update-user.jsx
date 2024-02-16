@@ -95,8 +95,8 @@ const UpdateUser = ({ user, setUser }) => {
   const [updateMessage, setUpdateMessage] = useState("");
   return (
     <>
-      <h4>Update User</h4>
-       <Form onSubmit={handleSubmit}>
+      <h4>Edit Profile</h4>
+      <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Fullname:</Form.Label>
           <Form.Control
@@ -108,7 +108,6 @@ const UpdateUser = ({ user, setUser }) => {
             placeholder="Enter Full Name"
           />
         </Form.Group>
-      <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Username:</Form.Label>
           <Form.Control
