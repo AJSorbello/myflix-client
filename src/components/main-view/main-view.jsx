@@ -223,7 +223,7 @@ export const MainView = () => {
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : !ready ? (
-                    <Col> Loading...</Col>
+                    <Col> peekaboo!!!</Col>
                   ) : (
                     <Col md={8}>
                       <ProfileView
