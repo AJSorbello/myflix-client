@@ -29,7 +29,7 @@ export function ProfileView({ movies, user, setUser, addFav, removeFav }) {
           </Card>
         </Col>
         <></>
-        <h4>Favorite Movies</h4>
+        <h2>Your Favorite Movies</h2>
         {movies
           .filter((movie) => user.FavoriteMovies.includes(movie._id))
           .map((movie) => (

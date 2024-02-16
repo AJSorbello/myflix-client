@@ -70,7 +70,7 @@ export const MovieView = ({ user, addFav, removeFav, movies }) => {
                 title="Movie trailer"
                 aria-label="trailer"
                 allowFullScreen
-                className="Trailer-button">
+                style={{ width: "100%", height: "500px" }}>
                 Watch Trailer
               </iframe>
             </span>
