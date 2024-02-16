@@ -32,6 +32,10 @@ body {
   background-color: black;
   color: white;
 }
-
+.open-button:hover {
+  background-color: #555; // Change to the color you want when hovered
+  color: white; // Change the text color when hovered
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
 
 @import "~bootstrap/scss/bootstrap";
