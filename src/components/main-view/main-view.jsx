@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./main-view.scss";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -17,44 +17,59 @@ export const MainView = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [ready, setReady] = useState(false);
 
-  const addFav = (movieId) => {
-    fetch(
-      `https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data);
-      })
-      .catch((error) => {
-        console.error("Error adding favorite:", error);
-      });
-  };
-  const removeFav = (movieId) => {
-    fetch(
-      `https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${user.Username}/movies/${movieId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data);
-      })
-      .catch((error) => {
-        console.error("Error removing favorite:", error);
-      });
-  };
+  const addFav = useCallback(
+    (movieId) => {
+      setUser((prevUser) => ({
+        ...prevUser,
+        FavoriteMovies: [...prevUser.FavoriteMovies, movieId],
+      }));
+      fetch(
+        `https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setUser(data);
+        })
+        .catch((error) => {
+          console.error("Error adding favorite:", error);
+        });
+    },
+    [user, token]
+  ); // add dependencies here
+  const removeFav = useCallback(
+    (movieId) => {
+      // Optimistically update the state
+      setUser((prevUser) => ({
+        ...prevUser,
+        FavoriteMovies: prevUser.FavoriteMovies.filter((id) => id !== movieId),
+      }));
+      fetch(
+        `https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${user.Username}/movies/${movieId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setUser(data);
+        })
+        .catch((error) => {
+          console.error("Error removing favorite:", error);
+        });
+    },
+    [user, token]
+  ); // add dependencies here
 
   useEffect(() => {
     if (!token) {
