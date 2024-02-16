@@ -2,7 +2,7 @@ input[type="text"] {
   background-color: white;
 }
 .search-bar {
-  background-color: white;
+  background-color: rgb(186, 103, 103);
 }
 
 .search-bar:focus {
@@ -37,5 +37,7 @@ body {
   color: white; // Change the text color when hovered
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
+.search-bar-custom {
+  margin-top: 120px; // Adjust this value as needed
+}
 @import "~bootstrap/scss/bootstrap";

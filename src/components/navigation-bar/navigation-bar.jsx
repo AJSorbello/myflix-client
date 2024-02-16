@@ -22,6 +22,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
 
   return (
     <Navbar
+      className="navbar-custom"
       bg={theme === "light" ? "light" : "dark"}
       variant={theme === "light" ? "light" : "dark"}
       expand="lg"
@@ -49,7 +50,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           } // Custom icon based on theme
         />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto ">
             {!user && (
               <>
                 <Nav.Link as={Link} to="/">
@@ -74,6 +75,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
               </>
             )}
             <Form.Check
+              className="toggle-custom"
               type="switch"
               id="custom-switch"
               label={theme === "light" ? "Light" : "Dark"}
