@@ -101,7 +101,7 @@ const UpdateUser = ({ user, setUser }) => {
           <Form.Label>Fullname:</Form.Label>
           <Form.Control
             type="text"
-            name="Username"
+            name="Fullname"
             defaultValue={user.Fullname}
             onChange={(e) => handleUpdate(e)}
             required
