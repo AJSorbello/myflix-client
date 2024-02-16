@@ -13,15 +13,15 @@ export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const Username = localStorage.getItem("Username");
+  const userName = localStorage.getItem("userName");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!Username || !token) {
+    if (!userName || !token) {
       return;
     }
     // Fetch the user
-    fetch(`https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${Username}`, {
+    fetch(`https://ajmovies-fc7e7627ec3d.herokuapp.com/users/${userName}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -35,7 +35,7 @@ export const LoginView = ({ onLoggedIn }) => {
       });
   }, []);
 
-  if (Username && token) {
+  if (userName && token) {
     return;
   }
   const handleSubmit = (event) => {
@@ -57,7 +57,7 @@ export const LoginView = ({ onLoggedIn }) => {
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
-          localStorage.setItem("Username", data.user.Username);
+          localStorage.setItem("userName", data.user.Username);
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
         } else {

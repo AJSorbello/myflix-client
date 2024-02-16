@@ -8,8 +8,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Container, Col, Row, FormControl, Button } from "react-bootstrap";
-import { set } from "mongoose";
+import { Container, Col, Row } from "react-bootstrap";
 
 export const MainView = () => {
   const [token, setToken] = useState(null);
@@ -151,34 +150,28 @@ export const MainView = () => {
                 <>
                   {!user ? (
                     <Navigate to="/login" replace />
+                  ) : !ready ? (
+                    <Col> Loading...</Col>
                   ) : movies.length === 0 ? (
-                    <Col></Col>
+                    <Col> The list is empty!</Col>
                   ) : (
                     <>
                       <Row className="justify-content-md-center">
-                        <Col xs lg="4">
+                        <Col className="mb-3 mt-3">
                           <Row>
-                            <Col>
-                              <FormControl
+                            <Col md={6} className="mx-auto">
+                              <input
                                 type="text"
-                                placeholder="Search"
+                                placeholder="Search..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="form-control"
                               />
                             </Col>
-
-                            <Col xs="auto">
-                              <Button
-                                variant="primary"
-                                className="clear-button"
-                                onClick={() => setSearchTerm("")}>
-                                Clear
-                              </Button>
-                            </Col>
                           </Row>
                         </Col>
                       </Row>
+
                       {movies
                         .filter((movie) =>
                           movie.Title.toLowerCase().includes(
@@ -208,7 +201,7 @@ export const MainView = () => {
                   {!user ? (
                     <Navigate to="/login" replace />
                   ) : !ready ? (
-                    <Col> Loading....</Col>
+                    <Col> Loading...</Col>
                   ) : (
                     <Col md={8}>
                       <MovieView
@@ -226,26 +219,24 @@ export const MainView = () => {
             <Route
               path="/profile"
               element={
-                // <>
-                //   {!user ? (
-                //     <Navigate to="/login" replace />
-                //   ) : !ready ? (
-                //     <Col> Loading...</Col>
-                //   ) : (
-                //     <Col md={8}>
-                <ProfileView
-                  user={user}
-                  setUser={setUser}
-                  movies={movies}
-                  addFav={addFav}
-                  removeFav={removeFav}
-                />
-
-                // </Col>
-                // )
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : !ready ? (
+                    <Col> Loading...</Col>
+                  ) : (
+                    <Col md={8}>
+                      <ProfileView
+                        user={user}
+                        setUser={setUser}
+                        movies={movies}
+                        addFav={addFav}
+                        removeFav={removeFav}
+                      />
+                    </Col>
+                  )}
+                </>
               }
-              // </>
-              // }
             />
           </Routes>
         </Row>
