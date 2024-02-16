@@ -9,6 +9,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Container, Col, Row, FormControl, Button } from "react-bootstrap";
+import { set } from "mongoose";
 
 export const MainView = () => {
   const [token, setToken] = useState(null);
@@ -225,25 +226,26 @@ export const MainView = () => {
             <Route
               path="/profile"
               element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : !ready ? (
-                    <Col> Loading...</Col>
-                  ) : (
-                    <Col md={8}>
-                      <ProfileView
-                        user={user}
-                        setUser={setUser}
-                        movies={movies}
-                        addFav={addFav}
-                        removeFav={removeFav}
-                      />
-                      //{" "}
-                    </Col>
-                  )}
-                </>
+                // <>
+                //   {!user ? (
+                //     <Navigate to="/login" replace />
+                //   ) : !ready ? (
+                //     <Col> Loading...</Col>
+                //   ) : (
+                //     <Col md={8}>
+                <ProfileView
+                  user={user}
+                  setUser={setUser}
+                  movies={movies}
+                  addFav={addFav}
+                  removeFav={removeFav}
+                />
+
+                // </Col>
+                // )
               }
+              // </>
+              // }
             />
           </Routes>
         </Row>
